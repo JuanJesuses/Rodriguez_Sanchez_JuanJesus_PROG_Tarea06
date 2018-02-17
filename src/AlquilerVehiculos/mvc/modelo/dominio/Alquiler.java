@@ -1,10 +1,10 @@
-package tarea06;
+package AlquilerVehiculos.mvc.modelo.dominio;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import tarea06.Cliente;
-import tarea06.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
 
 public class Alquiler {
 	

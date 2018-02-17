@@ -1,4 +1,4 @@
-package tarea06;
+package AlquilerVehiculos.mvc.modelo.dominio;
 
 public class ExcepcionAlquilerVehiculos  extends RuntimeException{
 	

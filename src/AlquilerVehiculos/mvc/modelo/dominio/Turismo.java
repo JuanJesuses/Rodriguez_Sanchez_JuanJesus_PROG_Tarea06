@@ -1,4 +1,4 @@
-package tarea06;
+package AlquilerVehiculos.mvc.modelo.dominio;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

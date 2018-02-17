@@ -1,5 +1,10 @@
 package tarea06;
 
+import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
+import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+
 public class AlquilerVehiculos {
 	
 	private Turismo[] turismos;

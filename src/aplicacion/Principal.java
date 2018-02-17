@@ -1,11 +1,11 @@
 package aplicacion;
 
 import utilidades.Entrada;
-import tarea06.Turismo;
-import tarea06.Alquiler;
+import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
+import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
 import tarea06.AlquilerVehiculos;
-import tarea06.Cliente;
-import tarea06.ExcepcionAlquilerVehiculos;
 
 public class Principal {
 
