@@ -3,6 +3,7 @@ package aplicacion;
 import utilidades.Entrada;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
 import tarea06.AlquilerVehiculos;
@@ -13,15 +14,15 @@ public class Principal {
 		
 
 		int opcionMenu; //Variable para escoger una opción del menú principal
-		String nombre, dni, direccion, localidad, codigoPostal;
+		String nombre, dni, calle, localidad, codigoPostal;
 		String matricula, marca, modelo;
 		int cilindrada;
 		char nuevo = 'n';
 		AlquilerVehiculos miAlquiler = new AlquilerVehiculos(); //Se crea un objeto de tipo alquilerVehiculos
 		
-		Cliente cliente1 = new Cliente ("Bilbo Bolsón", "12345678A", "C/La Runa, 32", "Bolsón Cerrado", "01005");
-		Cliente cliente2 = new Cliente ("Meriadoc Brandigamo", "23456789B", "C/La Runa, 72", "Hobbitón", "63541");
-		Cliente cliente3 = new Cliente ("Peregrin Tuc", "34567890C", "C/La Runa, 29", "Bolsón Cerrado", "22456");
+		Cliente cliente1 = new Cliente ("Bilbo Bolsón", "12345678A", new DireccionPostal("C/La Runa, 32", "Bolsón Cerrado", "01005"));
+		Cliente cliente2 = new Cliente ("Meriadoc Brandigamo", "23456789B", new DireccionPostal("C/La Runa, 72", "Hobbitón", "63541"));
+		Cliente cliente3 = new Cliente ("Peregrin Tuc", "34567890C", new DireccionPostal("C/La Runa, 29", "Bolsón Cerrado", "22456"));
 		
 		miAlquiler.addCliente(cliente1);
 		miAlquiler.addCliente(cliente2);
@@ -61,6 +62,7 @@ public class Principal {
 				case 1:
 					
 					Cliente nuevoCliente = null;
+					DireccionPostal direccionPostal;
 					
 					do {
 						do {
@@ -72,14 +74,15 @@ public class Principal {
 							System.out.println("Introduzca el DNI: ");
 							dni = Entrada.cadena();
 							System.out.println("Introduzca la dirección del cliente: ");
-							direccion = Entrada.cadena();
+							calle = Entrada.cadena();
 							System.out.println("Introduzca la localidad: ");
 							localidad = Entrada.cadena();
 							System.out.println("Introduzca el código postal: ");
 							codigoPostal = Entrada.cadena();
 							
 							try {
-								nuevoCliente = new Cliente (nombre, dni, direccion, localidad, codigoPostal);
+								nuevoCliente = new Cliente (nombre, dni, new DireccionPostal (calle, localidad, codigoPostal));
+								System.out.println("El cliente se ha añadido de forma satisfactoria");
 							}catch (ExcepcionAlquilerVehiculos e) {
 								System.out.printf("ERROR: %s%n%n", e.getMessage());
 								System.out.println("Vuelve a introducir los datos de forma correcta.");

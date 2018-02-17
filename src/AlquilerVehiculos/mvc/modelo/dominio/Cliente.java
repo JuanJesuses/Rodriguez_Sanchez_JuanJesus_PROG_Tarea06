@@ -6,45 +6,28 @@ import java.util.regex.Pattern;
 public class Cliente {
 	private String nombre;
 	private String dni;
-	private String direccion;
-	private String localidad;
-	private String codigoPostal;
+	private DireccionPostal direccionPostal;
 	private int identificador;
-	private static int numClientes;
+	private static int ultimoIdentificador;
 	
 	public Cliente(Cliente cliente) {
-		
 		nombre = cliente.getNombre();
 		dni = cliente.getDni();
-		direccion = cliente.getDireccion();
-		localidad = cliente.getLocalidad();
-		codigoPostal = cliente.getCodigoPostal();
-		
+		direccionPostal = cliente.getDireccionPostal();		
 	}
 	
-	public Cliente (String nombre, String dni, String direccion, String localidad, String codigoPostal) {
+	public Cliente (String nombre, String dni, DireccionPostal direccionPostal) {
 		
-		this.nombre = nombre;
-		
-		if(compruebaDni(dni)) {
-			this.dni = dni;
-		}else {
-			throw new ExcepcionAlquilerVehiculos("El DNI introducido no es válido.");
-		}
-		
-		this.direccion = direccion;
-		this.localidad = localidad;
-		
-		if(compruebaCodigoPostal(codigoPostal)) {
-			this.codigoPostal = codigoPostal;
-		}else {
-			throw new ExcepcionAlquilerVehiculos("El código postal introducido no es válido.");
-		}
-		
-		numClientes++;
-		identificador = numClientes;
+		setNombre(nombre);
+		setDni(dni);
+		setDireccionPostal(direccionPostal);
+		asignarNuevoIdentificador();
 	}
 	
+	private void asignarNuevoIdentificador() {
+		ultimoIdentificador++;
+		identificador = ultimoIdentificador;
+	}
 	private boolean compruebaDni(String dni) {
 		Pattern patron = Pattern.compile("[0-9]{8}[A-Z]");
 		Matcher emparejador = patron.matcher(dni);
@@ -52,31 +35,36 @@ public class Cliente {
 		return emparejador.matches();
 	}
 	
-	private boolean compruebaCodigoPostal(String codigoPostal) {
-		Pattern patron = Pattern.compile("[0-9]{5}");
-		Matcher emparejador = patron.matcher(codigoPostal);
-		
-		return emparejador.matches();
+	private void setNombre(String nombre) {
+		if(nombre != null && !nombre.equals("")) {
+			this.nombre = nombre;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("El campo nombre no puede estar vacío.");
+		}
 	}
 
 	public String getNombre() {
 		return nombre;
+	}
+	
+	private void setDni(String dni) {
+		if (compruebaDni(dni)) {
+			this.dni = dni;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("El DNI introducido no es válido.");
+		}
 	}
 
 	public String getDni() {
 		return dni;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	private void setDireccionPostal(DireccionPostal direccionPostal) {
+		this.direccionPostal = new DireccionPostal(direccionPostal);
 	}
-
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	public String getCodigoPostal() {
-		return codigoPostal;
+	
+	public DireccionPostal getDireccionPostal() {
+		return new DireccionPostal(direccionPostal);
 	}
 
 	public int getIdentificador() {
@@ -85,7 +73,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "CLIENTE: \nNOMBRE: " + nombre + " DNI: " + dni + " DIRECCIÓN: " + direccion + " LOCALIDAD: " + localidad
-				+ " CÓDIGO POSTAL: " + codigoPostal + " IDENTIFICADOR: " + identificador + "";
+		return String.format("Identificador: %d Nombre: %s DNI: %s %s", 
+				identificador, nombre, dni, direccionPostal);
 	}
 }
