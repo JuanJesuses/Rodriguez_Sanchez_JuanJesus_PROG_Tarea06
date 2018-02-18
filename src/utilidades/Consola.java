@@ -1,0 +1,95 @@
+package utilidades;
+
+import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
+import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.vista.Opcion;
+
+public class Consola {
+	
+	public static void mostrarMenu() {
+		mostrarCabecera("Alquiler de Vehículos");
+		
+		for (Opcion opcion : Opcion.values()) {
+			System.out.println(opcion);
+		}
+	}
+	
+	public static void mostrarCabecera(String mensaje) {
+		
+		System.out.printf("%n%s%n", mensaje);
+		System.out.println(String.format("%0" + mensaje.length() + "d%n", 0).replace("0", "-"));
+		
+	}
+	
+	public static int elegirOpcion() {
+		int ordinalOpcion;
+		
+		do {
+			System.out.println("Elige una opción: ");
+			ordinalOpcion = Entrada.entero();
+		}while(!Opcion.esOrdinalValido(ordinalOpcion));
+		
+		return ordinalOpcion;
+	}
+	
+	public static String leerDni() {
+		System.out.println("Introduce el DNI del cliente: ");
+		String dni = Entrada.cadena();
+		
+		return dni;
+	}
+	
+	public static String leerMatricula() {
+		System.out.println("Introduce la matrícula del vehículo: ");
+		String matricula = Entrada.cadena();
+		
+		return matricula;
+	}
+	
+	public static Cliente leerCliente() {
+		Cliente cliente = null;
+		System.out.println("Introduce el nombre: ");
+		String nombre = Entrada.cadena();
+		System.out.println("Introduce el DNI: ");
+		String dni = Entrada.cadena();
+		System.out.println("Introduce la calle: ");
+		String calle = Entrada.cadena();
+		System.out.println("Introduce la localidad: ");
+		String localidad = Entrada.cadena();
+		System.out.println("Introduce el código postal: ");
+		String codigoPostal = Entrada.cadena();
+		
+		try {
+			cliente = new Cliente(nombre, dni, new DireccionPostal (calle, localidad, codigoPostal));
+			System.out.println("Todo ok");
+		}catch (ExcepcionAlquilerVehiculos e) {
+			System.out.printf("ERROR: %s%n%n", e.getMessage());
+		}
+		
+		return cliente;
+	}
+	
+	public static Turismo leerTurismo() {
+		Turismo turismo = null;
+		System.out.println("Introduce la matrícula: ");
+		String matricula = Entrada.cadena();
+		System.out.println("Introduce la marca del vehículo: ");
+		String marca = Entrada.cadena();
+		System.out.println("Introduce el modelo del vehículo: ");
+		String modelo = Entrada.cadena();
+		System.out.println("Introduce la cilindrada: ");
+		int cilindrada = Entrada.entero();
+		
+		try {
+			turismo = new Turismo (matricula, marca, modelo, cilindrada);
+			System.out.println("Todo ok");
+		}catch (ExcepcionAlquilerVehiculos e) {
+			System.out.printf("ERROR: %s%n%n", e.getMessage());
+		}
+		
+		return turismo;
+	}
+	
+}

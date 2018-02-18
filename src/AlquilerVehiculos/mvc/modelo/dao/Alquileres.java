@@ -14,7 +14,7 @@ public class Alquileres {
 		alquileres = new Alquiler[MAX_ALQUILERES];
 	}
 	
-	public Alquiler[] getAlquiler() {
+	public Alquiler[] getAlquileres() {
 		return alquileres.clone();
 	}
 	
@@ -27,10 +27,12 @@ public class Alquileres {
 	public void abrirAlquiler (Cliente cliente, Turismo turismo) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistenciaOtroAbierto(cliente, turismo);
 		
-		if (indiceNoSuperaTamano(indice))
+		if (indiceNoSuperaTamano(indice)) {
 			alquileres[indice] = new Alquiler (cliente, turismo);
-		else
+		}else {
 			throw new ExcepcionAlquilerVehiculos ("El array de alquileres está lleno.");
+		}
+			
 	}
 	
 	/**
