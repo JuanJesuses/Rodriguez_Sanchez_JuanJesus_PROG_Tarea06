@@ -22,21 +22,12 @@ public class Turismo {
 	
 	public Turismo (String matricula, String marca, String modelo, int cilindrada) {
 		
-		if(compruebaMatricula(matricula)) {
-			this.matricula = matricula;
-		}else {
-			throw new ExcepcionAlquilerVehiculos("La matrícula introducida no es correcta.");
-		}
-		
-		this.marca = marca;
-		this.modelo = modelo;
-		
-		if(cilindrada > 0) 
-			this.cilindrada = cilindrada;
-		else
-			throw new ExcepcionAlquilerVehiculos("La cilindrada no puede ser negativa.");
-		
-		disponible = true;
+		setMatricula(matricula);
+		setMarca(marca);
+		setModelo(modelo);
+		setCilindrada(cilindrada);
+		setDisponible(true);
+		//disponible = true;
 		
 	}
 	
@@ -46,19 +37,47 @@ public class Turismo {
 		
 		return emparejador.matches();
 	}
-
+	
+	private void setMatricula(String matricula) {
+		if(compruebaMatricula(matricula)) {
+			this.matricula = matricula;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("El campo matrícula está vacío o la matrícula introducida no es correcta.");
+		}
+	}
 	public String getMatricula() {
 		return matricula;
 	}
-
+	
+	private void setMarca(String marca) {
+		if(marca != null && !marca.equals("")) {
+			this.marca = marca;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("El campo marca no puede estar vacío.");
+		}
+	}
 	public String getMarca() {
 		return marca;
 	}
-
+	
+	private void setModelo(String modelo) {
+		if(modelo != null && !modelo.equals("")) {
+			this.modelo = modelo;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("El campo modelo no puede estar vacío.");
+		}
+	}
 	public String getModelo() {
 		return modelo;
 	}
-
+	
+	private void setCilindrada(int cilindrada) {
+		if(cilindrada > 0) {
+			this.cilindrada = cilindrada;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("La cilindrada no puede ser inferior a cero.");
+		}
+	}
 	public int getCilindrada() {
 		return cilindrada;
 	}

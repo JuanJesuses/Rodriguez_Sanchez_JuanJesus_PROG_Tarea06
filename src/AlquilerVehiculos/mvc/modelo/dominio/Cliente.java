@@ -13,7 +13,8 @@ public class Cliente {
 	public Cliente(Cliente cliente) {
 		nombre = cliente.getNombre();
 		dni = cliente.getDni();
-		direccionPostal = cliente.getDireccionPostal();		
+		direccionPostal = cliente.getDireccionPostal();
+		identificador = cliente.getIdentificador();
 	}
 	
 	public Cliente (String nombre, String dni, DireccionPostal direccionPostal) {

@@ -18,8 +18,8 @@ public class Alquiler {
 		
 	public Alquiler (Cliente cliente, Turismo turismo) {
 		
-		this.cliente = cliente;
-		this.turismo = turismo;
+		setCliente(cliente);
+		setTurismo(turismo);
 		fecha = new Date();
 		dias = 0;
 		turismo.setDisponible(false);
@@ -33,9 +33,24 @@ public class Alquiler {
 	public int getDias() {
 		return dias;
 	}
-
+	
+	private void setCliente(Cliente cliente) {
+		if (cliente != null) {
+			this.cliente = cliente;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("Para iniciar el alquiler debe agregar un cliente.");
+		}
+	}
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	private void setTurismo(Turismo turismo) {
+		if (turismo != null) {
+			this.turismo = turismo;
+		}else {
+			throw new ExcepcionAlquilerVehiculos("Para iniciar el alquiler debe agregar un vehículo.");
+		}
 	}
 
 	public Turismo getTurismo() {
