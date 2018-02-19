@@ -38,11 +38,11 @@ public class Cliente {
 	
 	private void setNombre(String nombre) {
 		if(nombre != null && !nombre.equals("")) {
-			this.nombre = nombre;
+				this.nombre = nombre;
 		}else {
 			throw new ExcepcionAlquilerVehiculos("El campo nombre no puede estar vacío.");
 		}
-	}
+	}	
 
 	public String getNombre() {
 		return nombre;

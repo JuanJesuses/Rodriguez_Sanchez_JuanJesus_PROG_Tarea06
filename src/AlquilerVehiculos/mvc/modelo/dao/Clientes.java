@@ -71,7 +71,6 @@ public class Clientes {
 		
 		if (indiceNoSuperaTamano(indice)) {
 			desplazarUnaPosicionHaciaLaIzquierda(indice);
-			//clientes[clientes.length-1] = null;
 		}else {
 			throw new ExcepcionAlquilerVehiculos ("El cliente a borrar no existe.");
 		}

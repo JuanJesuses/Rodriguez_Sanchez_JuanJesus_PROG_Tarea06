@@ -118,13 +118,12 @@ public class IUTextual {
 	
 	public void anadirTurismo() {
 		Consola.mostrarCabecera("Añadir Turismo");
-		String matricula = Consola.leerMatricula();
-		Turismo turismo = controlador.buscarTurismo(matricula);
+		Turismo turismo = Consola.leerTurismo();
 		
 		try {
 			controlador.anadirTurismo(turismo);
 			System.out.println("Vehículo añadido de forma satisfactoria.");
-		}catch (ExcepcionAlquilerVehiculos e){
+		}catch (Exception e){
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
 	}

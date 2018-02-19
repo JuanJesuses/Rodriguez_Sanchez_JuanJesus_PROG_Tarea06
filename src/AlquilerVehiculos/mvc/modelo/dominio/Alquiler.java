@@ -3,6 +3,8 @@ package AlquilerVehiculos.mvc.modelo.dominio;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
 

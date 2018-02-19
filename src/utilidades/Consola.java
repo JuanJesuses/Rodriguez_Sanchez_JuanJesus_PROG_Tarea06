@@ -49,6 +49,7 @@ public class Consola {
 	}
 	
 	public static Cliente leerCliente() {
+		
 		Cliente cliente = null;
 		System.out.println("Introduce el nombre: ");
 		String nombre = Entrada.cadena();
@@ -63,11 +64,10 @@ public class Consola {
 		
 		try {
 			cliente = new Cliente(nombre, dni, new DireccionPostal (calle, localidad, codigoPostal));
-			System.out.println("Todo ok");
 		}catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
-		
+					
 		return cliente;
 	}
 	

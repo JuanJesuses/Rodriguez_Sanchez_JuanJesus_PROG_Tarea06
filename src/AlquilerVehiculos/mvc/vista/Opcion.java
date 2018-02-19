@@ -28,7 +28,7 @@ public enum Opcion {
 		}
 	},
 	
-	LISTAR_CLIENTE("Listar Cliente"){
+	LISTAR_CLIENTE("Listar Clientes"){
 		public void ejecutar() {
 			vista.listarClientes();
 		}
@@ -52,7 +52,7 @@ public enum Opcion {
 		}
 	},
 	
-	LISTAR_TURISMO("Listar Turismo"){
+	LISTAR_TURISMO("Listar Turismos"){
 		public void ejecutar() {
 			vista.listarTurismos();
 		}

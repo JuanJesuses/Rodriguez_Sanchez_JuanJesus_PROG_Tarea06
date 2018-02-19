@@ -16,7 +16,7 @@ public class Turismo {
 		marca = turismo.getMarca();
 		modelo = turismo.getModelo();
 		cilindrada = turismo.getCilindrada();
-		disponible = turismo.getDisponible();
+		this.disponible = turismo.disponible;
 		
 	}
 	
@@ -27,7 +27,6 @@ public class Turismo {
 		setModelo(modelo);
 		setCilindrada(cilindrada);
 		setDisponible(true);
-		//disponible = true;
 		
 	}
 	
@@ -45,6 +44,7 @@ public class Turismo {
 			throw new ExcepcionAlquilerVehiculos("El campo matrícula está vacío o la matrícula introducida no es correcta.");
 		}
 	}
+	
 	public String getMatricula() {
 		return matricula;
 	}
@@ -56,6 +56,7 @@ public class Turismo {
 			throw new ExcepcionAlquilerVehiculos("El campo marca no puede estar vacío.");
 		}
 	}
+	
 	public String getMarca() {
 		return marca;
 	}
@@ -67,6 +68,7 @@ public class Turismo {
 			throw new ExcepcionAlquilerVehiculos("El campo modelo no puede estar vacío.");
 		}
 	}
+	
 	public String getModelo() {
 		return modelo;
 	}
@@ -78,6 +80,7 @@ public class Turismo {
 			throw new ExcepcionAlquilerVehiculos("La cilindrada no puede ser inferior a cero.");
 		}
 	}
+	
 	public int getCilindrada() {
 		return cilindrada;
 	}
