@@ -56,12 +56,13 @@ public class Alquileres {
 		int indice = 0;
 		boolean encontrado = false;
 		
+		
 		while(indiceNoSuperaTamano(indice) && !encontrado) {
 			if (alquileres[indice] == null) {
 				encontrado = true;
 			}else if (alquileres[indice].getTurismo().getMatricula().equals(turismos.getMatricula())
-					&& alquileres[indice].getTurismo().getDisponible() == false
-					&& alquileres[indice].getCliente().getDni().equals(clientes.getDni())) {
+					&&alquileres[indice].getTurismo().getDisponible() == false
+					/*&& alquileres[indice].getCliente().getDni().equals(clientes.getDni())*/) {
 				throw new ExcepcionAlquilerVehiculos("Ya existe un alquiler abierto para ese turismo.");
 			}else {
 				indice++;
