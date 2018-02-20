@@ -10,25 +10,28 @@ public class Vehiculo {
 	private String matricula;
 	private String marca;
 	private String modelo;
-	private int cilindrada;
 	private boolean disponible;
+	private DatosTecnicosVehiculos datosTecnicosVehiculo;
+	private final double FACTOR_CILINDRADA = 20;
+	private final double FACTOR_NUMERO_PLAZAS = 20;
+	private final double FACTOR_PMA = 20;
 	
 	public Vehiculo (Vehiculo vehiculo) {
 		
 		matricula = vehiculo.getMatricula();
 		marca = vehiculo.getMarca();
 		modelo = vehiculo.getModelo();
-		cilindrada = vehiculo.getCilindrada();
+		datosTecnicosVehiculo = vehiculo.getDatosTecnicosVehiculo();
 		this.disponible = vehiculo.disponible;
 		
 	}
 	
-	public Vehiculo (String matricula, String marca, String modelo, int cilindrada) {
+	public Vehiculo (String matricula, String marca, String modelo, DatosTecnicosVehiculos datosTecnicosVehiculo) {
 		
 		setMatricula(matricula);
 		setMarca(marca);
 		setModelo(modelo);
-		setCilindrada(cilindrada);
+		setDatosTecnicosVehiculo(datosTecnicosVehiculo);
 		setDisponible(true);
 		
 	}
@@ -76,18 +79,14 @@ public class Vehiculo {
 		return modelo;
 	}
 	
-	private void setCilindrada(int cilindrada) {
-		if(cilindrada > 0) {
-			this.cilindrada = cilindrada;
-		}else {
-			throw new ExcepcionAlquilerVehiculos("La cilindrada no puede ser inferior a cero.");
-		}
+	private void setDatosTecnicosVehiculo (DatosTecnicosVehiculos datosTecnicosVehiculo) {
+		this.datosTecnicosVehiculo = new DatosTecnicosVehiculos(datosTecnicosVehiculo);
 	}
 	
-	public int getCilindrada() {
-		return cilindrada;
+	public DatosTecnicosVehiculos getDatosTecnicosVehiculo() {
+		return new DatosTecnicosVehiculos(datosTecnicosVehiculo);
 	}
-
+	
 	public boolean getDisponible() {
 		return disponible;
 	}
@@ -96,11 +95,10 @@ public class Vehiculo {
 		this.disponible = disponible;
 		
 	}
-	
+
 	@Override
 	public String toString() {
-		return "TURISMO: \nMATRÍCULA: " + matricula + " MARCA: " + marca + " MODELO: " + modelo + " CILINDRADA: "
-				+ cilindrada + " DISPONIBLE: " + getDisponible() + "";
+		return "Vehiculo Matricula: " + matricula + " Marca: " + marca + " Modelo: " + modelo + " Disponible: "
+				+ disponible + " Datos Técnicos del Vehículo: " + datosTecnicosVehiculo + "";
 	}
-
 }

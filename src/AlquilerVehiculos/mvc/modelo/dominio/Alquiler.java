@@ -60,7 +60,7 @@ public class Alquiler {
 	}
 	
 	public double getPrecio() {
-		return PRECIO_DIA*getDias() + vehiculo.getCilindrada()/100;
+		return PRECIO_DIA*getDias() + vehiculo.getDatosTecnicosVehiculo().getCilindrada()/100;
 	}
 	
 	public void close() {

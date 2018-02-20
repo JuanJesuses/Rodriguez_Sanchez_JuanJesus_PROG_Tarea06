@@ -64,6 +64,7 @@ public class DireccionPostal {
 		return emparejador.matches();
 	}
 	
+	@Override
 	public String toString() {
 		return String.format("Direccion: %s Localidad: %s Código Postal: %s", calle, localidad, codigoPostal);
 	}

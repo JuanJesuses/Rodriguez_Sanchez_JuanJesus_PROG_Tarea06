@@ -7,6 +7,7 @@ import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class AlquilerVehiculos {
@@ -77,9 +78,9 @@ public class AlquilerVehiculos {
 		anadirCliente(cliente2);
 		anadirCliente(cliente3);
 		
-		Vehiculo vehiculo1 = new Vehiculo ("4512BCD", "Opel", "Astra", 1100);
-		Vehiculo vehiculo2 = new Vehiculo ("7628HKG", "Citröen", "Xsara", 1900);
-		Vehiculo vehiculo3 = new Vehiculo ("2356CDH", "Hyunday", "Elantra", 1600);
+		Vehiculo vehiculo1 = new Vehiculo ("4512BCD", "Opel", "Astra", new DatosTecnicosVehiculos (1100, 5, 3500));
+		Vehiculo vehiculo2 = new Vehiculo ("7628HKG", "Citröen", "Xsara", new DatosTecnicosVehiculos (1900, 7, 3500));
+		Vehiculo vehiculo3 = new Vehiculo ("2356CDH", "Hyunday", "Elantra", new DatosTecnicosVehiculos (1600, 5, 3500));
 		
 		anadirVehiculo(vehiculo1);
 		anadirVehiculo(vehiculo2);

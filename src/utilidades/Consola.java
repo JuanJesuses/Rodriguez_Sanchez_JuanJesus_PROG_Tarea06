@@ -3,6 +3,7 @@ package utilidades;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import AlquilerVehiculos.mvc.vista.Opcion;
 
@@ -81,9 +82,13 @@ public class Consola {
 		String modelo = Entrada.cadena();
 		System.out.println("Introduce la cilindrada: ");
 		int cilindrada = Entrada.entero();
+		System.out.println("Introduce el número de plazas del vehículo: ");
+		int numeroPlazas = Entrada.entero();
+		System.out.println("Introduce el Peso Máximo Autorizado (PMA): ");
+		int pma = Entrada.entero();
 		
 		try {
-			vehiculo = new Vehiculo (matricula, marca, modelo, cilindrada);
+			vehiculo = new Vehiculo (matricula, marca, modelo, new DatosTecnicosVehiculos (cilindrada, numeroPlazas, pma));
 			System.out.println("Todo ok");
 		}catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
