@@ -5,9 +5,7 @@ import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 public enum TipoVehiculo {
 	
 	TURISMO("TURISMO"){
-		//public Vehiculo getInstancia(Vehiculo turismo) {
-				//	return new Vehiculo(turismo);
-				//}
+		
 	},
 	
 	DE_CARGA("DE CARGA"){

@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
-public class Vehiculo {
+public abstract class Vehiculo {
 	
 	private String matricula;
 	private String marca;
@@ -35,6 +35,10 @@ public class Vehiculo {
 		setDisponible(true);
 		
 	}
+	
+	public abstract TipoVehiculo getTipoVehiculo();
+	
+	public abstract double getPrecioEspecifico();
 	
 	private boolean compruebaMatricula(String matricula) {
 		Pattern patron = Pattern.compile("[0-9]{4}[B-DF-HJ-NP-TV-Z]{3}");
