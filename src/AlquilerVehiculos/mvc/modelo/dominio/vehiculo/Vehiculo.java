@@ -1,9 +1,11 @@
-package AlquilerVehiculos.mvc.modelo.dominio;
+package AlquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Turismo {
+import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+
+public class Vehiculo {
 	
 	private String matricula;
 	private String marca;
@@ -11,17 +13,17 @@ public class Turismo {
 	private int cilindrada;
 	private boolean disponible;
 	
-	public Turismo (Turismo turismo) {
+	public Vehiculo (Vehiculo vehiculo) {
 		
-		matricula = turismo.getMatricula();
-		marca = turismo.getMarca();
-		modelo = turismo.getModelo();
-		cilindrada = turismo.getCilindrada();
-		this.disponible = turismo.disponible;
+		matricula = vehiculo.getMatricula();
+		marca = vehiculo.getMarca();
+		modelo = vehiculo.getModelo();
+		cilindrada = vehiculo.getCilindrada();
+		this.disponible = vehiculo.disponible;
 		
 	}
 	
-	public Turismo (String matricula, String marca, String modelo, int cilindrada) {
+	public Vehiculo (String matricula, String marca, String modelo, int cilindrada) {
 		
 		setMatricula(matricula);
 		setMarca(marca);

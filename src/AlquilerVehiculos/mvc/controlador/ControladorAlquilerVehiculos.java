@@ -3,10 +3,10 @@ package AlquilerVehiculos.mvc.controlador;
 import AlquilerVehiculos.mvc.modelo.AlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dao.Alquileres;
 import AlquilerVehiculos.mvc.modelo.dao.Clientes;
-import AlquilerVehiculos.mvc.modelo.dao.Turismos;
+import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import AlquilerVehiculos.mvc.vista.IUTextual;
 
 public class ControladorAlquilerVehiculos {
@@ -25,20 +25,20 @@ public class ControladorAlquilerVehiculos {
 		vista.comenzar();
 	}
 	
-	public void anadirTurismo(Turismo turismo) {
-		modelo.anadirTurismo(turismo);
+	public void anadirVehiculo(Vehiculo vehiculo) {
+		modelo.anadirVehiculo(vehiculo);
 	}
 	
-	public void borrarTurismo(String matricula) {
-		modelo.borrarTurismo(matricula);
+	public void borrarVehiculo(String matricula) {
+		modelo.borrarVehiculo(matricula);
 	}
 	
-	public Turismo buscarTurismo(String matricula) {
-		return modelo.buscarTurismo(matricula);
+	public Vehiculo buscarVehiculo(String matricula) {
+		return modelo.buscarVehiculo(matricula);
 	}
 	
-	public Turismo[] obtenerTurismos() {
-		return modelo.obtenerTurismos();
+	public Vehiculo[] obtenerVehiculos() {
+		return modelo.obtenerVehiculos();
 	}
 	
 	public void anadirCliente(Cliente cliente) {
@@ -57,12 +57,12 @@ public class ControladorAlquilerVehiculos {
 		return modelo.obtenerClientes();
 	}
 	
-	public void abrirAlquiler(Cliente cliente, Turismo turismo) {
-		modelo.abrirAlquiler(cliente, turismo);
+	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
+		modelo.abrirAlquiler(cliente, vehiculo);
 	}
 	
-	public void cerrarAlquiler(Cliente cliente, Turismo turismo) {
-		modelo.cerrarAlquiler(cliente, turismo);
+	public void cerrarAlquiler(Cliente cliente, Vehiculo vehiculo) {
+		modelo.cerrarAlquiler(cliente, vehiculo);
 	}
 	
 	public Alquiler[] obtenerAlquileres() {

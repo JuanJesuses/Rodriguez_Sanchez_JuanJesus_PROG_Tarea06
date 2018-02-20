@@ -3,11 +3,11 @@ package AlquilerVehiculos.mvc.vista;
 import AlquilerVehiculos.mvc.controlador.ControladorAlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dao.Alquileres;
 import AlquilerVehiculos.mvc.modelo.dao.Clientes;
-import AlquilerVehiculos.mvc.modelo.dao.Turismos;
+import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import utilidades.Consola;
 
 public class IUTextual {
@@ -53,13 +53,13 @@ public class IUTextual {
 		String dni = Consola.leerDni();
 		Cliente cliente = controlador.buscarCliente(dni);
 		String matricula = Consola.leerMatricula();
-		Turismo turismo = controlador.buscarTurismo(matricula);
+		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
 		
-		if(cliente == null || turismo == null) {
+		if(cliente == null || vehiculo == null) {
 			System.out.println("ERROR: No hay ningún alquiler en curso con los datos seleccionados.");
 		}else {
 			try {
-				controlador.cerrarAlquiler(cliente, turismo);
+				controlador.cerrarAlquiler(cliente, vehiculo);
 				System.out.println("Alquiler cerrado de forma satisfactoria.");
 			}catch(ExcepcionAlquilerVehiculos e) {
 				System.out.printf("ERROR: %s%n%n", e.getMessage());
@@ -72,13 +72,13 @@ public class IUTextual {
 		String dni = Consola.leerDni();
 		Cliente cliente = controlador.buscarCliente(dni);
 		String matricula = Consola.leerMatricula();
-		Turismo turismo = controlador.buscarTurismo(matricula);
+		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
 		
-		if(cliente == null || turismo == null) {
+		if(cliente == null || vehiculo == null) {
 			System.out.println("ERROR: No hay ningún alquiler en curso con los datos seleccionados.");
 		}else {
 			try {
-				controlador.abrirAlquiler(cliente, turismo);
+				controlador.abrirAlquiler(cliente, vehiculo);
 				System.out.println("Alquiler generado de forma satisfactoria.");
 			}catch(ExcepcionAlquilerVehiculos e) {
 				System.out.printf("ERROR: %s%n%n", e.getMessage());
@@ -86,42 +86,42 @@ public class IUTextual {
 		}
 	}
 	
-	public void listarTurismos() {
-		Consola.mostrarCabecera("Listar Turismos");
+	public void listaVehiculos() {
+		Consola.mostrarCabecera("Listar Vehículos");
 		
-		for (Turismo turismo : controlador.obtenerTurismos()) {
-			if(turismo != null) {
-				System.out.println(turismo);
+		for (Vehiculo vehiculo : controlador.obtenerVehiculos()) {
+			if(vehiculo != null) {
+				System.out.println(vehiculo);
 			}
 		}
 		System.out.println("");
 	}
 	
-	public void buscarTurismo() {
-		Consola.mostrarCabecera("Buscar Turismo");
+	public void buscarVehiculo() {
+		Consola.mostrarCabecera("Buscar Vehículo");
 		String matricula = Consola.leerMatricula();
-		Turismo turismoBuscado = controlador.buscarTurismo(matricula);
-		String mensaje = (turismoBuscado != null) ? turismoBuscado.toString() : "El vehículo no existe.";
+		Vehiculo vehiculoBuscado = controlador.buscarVehiculo(matricula);
+		String mensaje = (vehiculoBuscado != null) ? vehiculoBuscado.toString() : "El vehículo no existe.";
 		System.out.printf("%s%n%n", mensaje);
 	}
 	
-	public void borrarTurismo() {
-		Consola.mostrarCabecera("Borrar Turismo");
+	public void borrarVehiculo() {
+		Consola.mostrarCabecera("Borrar Vehículo");
 		String matricula = Consola.leerMatricula();
 		try {
-			controlador.borrarTurismo(matricula);
+			controlador.borrarVehiculo(matricula);
 			System.out.println("Vehículo eliminado correctamente\n");
 		}catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
 	}
 	
-	public void anadirTurismo() {
-		Consola.mostrarCabecera("Añadir Turismo");
-		Turismo turismo = Consola.leerTurismo();
+	public void anadirVehiculo() {
+		Consola.mostrarCabecera("Añadir Vehículo");
+		Vehiculo vehiculo = Consola.leerVehiculo();
 		
 		try {
-			controlador.anadirTurismo(turismo);
+			controlador.anadirVehiculo(vehiculo);
 			System.out.println("Vehículo añadido de forma satisfactoria.");
 		}catch (Exception e){
 			System.out.printf("ERROR: %s%n%n", e.getMessage());

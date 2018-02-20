@@ -3,7 +3,7 @@ package AlquilerVehiculos.mvc.modelo.dao;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class Alquileres {
 
@@ -22,13 +22,13 @@ public class Alquileres {
 	 * Método que inicia un alquiler y pone el vehículo seleccionado
 	 * por el cliente como no disponible.
 	 * @param cliente El cliente que alquila.
-	 * @param turismo El turismo elegido por el cliente.
+	 * @param vehiculo El turismo elegido por el cliente.
 	 */
-	public void abrirAlquiler (Cliente cliente, Turismo turismo) {
-		int indice = buscarPrimerIndiceLibreComprobandoExistenciaOtroAbierto(cliente, turismo);
+	public void abrirAlquiler (Cliente cliente, Vehiculo vehiculo) {
+		int indice = buscarPrimerIndiceLibreComprobandoExistenciaOtroAbierto(cliente, vehiculo);
 		
 		if (indiceNoSuperaTamano(indice)) {
-			alquileres[indice] = new Alquiler (cliente, turismo);
+			alquileres[indice] = new Alquiler (cliente, vehiculo);
 		}else {
 			throw new ExcepcionAlquilerVehiculos ("El array de alquileres está lleno.");
 		}
@@ -49,10 +49,10 @@ public class Alquileres {
 	 * no contiene ningún alquiler y lanza una excepción si el turismo ya está
 	 * siendo alquilado en otro alquiler abierto.
 	 * @param clientes el cliente que queremos vincular al nuevo alquiler.
-	 * @param turismos el turismo elegido por el cliente.
+	 * @param vehiculos el turismo elegido por el cliente.
 	 * @return la posición del array de Alquileres donde poder almacenar un nuevo alquiler.
 	 */
-	private int buscarPrimerIndiceLibreComprobandoExistenciaOtroAbierto(Cliente clientes, Turismo turismos) {
+	private int buscarPrimerIndiceLibreComprobandoExistenciaOtroAbierto(Cliente clientes, Vehiculo vehiculos) {
 		int indice = 0;
 		boolean encontrado = false;
 		
@@ -60,8 +60,8 @@ public class Alquileres {
 		while(indiceNoSuperaTamano(indice) && !encontrado) {
 			if (alquileres[indice] == null) {
 				encontrado = true;
-			}else if (alquileres[indice].getTurismo().getMatricula().equals(turismos.getMatricula())
-					&&alquileres[indice].getTurismo().getDisponible() == false){
+			}else if (alquileres[indice].getVehiculo().getMatricula().equals(vehiculos.getMatricula())
+					&&alquileres[indice].getVehiculo().getDisponible() == false){
 				throw new ExcepcionAlquilerVehiculos("Ya existe un alquiler abierto para ese turismo.");
 			}else {
 				indice++;
@@ -74,10 +74,10 @@ public class Alquileres {
 	 * Método que cierra un alquiler abierto y pone el vehículo disponible
 	 * para un nuevo alquiler.
 	 * @param cliente que tiene un alquiler abierto para cerrar dicho alquiler.
-	 * @param turismo elegido por el cliente.
+	 * @param vehiculo elegido por el cliente.
 	 */
-	public void cerrarAlquiler (Cliente cliente, Turismo turismo) {
-		int indice = buscarAlquilerAbierto(cliente, turismo);
+	public void cerrarAlquiler (Cliente cliente, Vehiculo vehiculo) {
+		int indice = buscarAlquilerAbierto(cliente, vehiculo);
 		
 		if (indiceNoSuperaTamano(indice)) {
 			alquileres[indice].close();
@@ -89,17 +89,17 @@ public class Alquileres {
 	/**
 	 * Método que busca un alquiler abierto
 	 * @param cliente el cliente que tiene un vehículo alquilado.
-	 * @param turismo el turismo que ha elegido el cliente.
+	 * @param vehiculo el turismo que ha elegido el cliente.
 	 * @return posición del array donde se encuentra el alquiler abierto.
 	 */
-	private int buscarAlquilerAbierto(Cliente cliente, Turismo turismo) {
+	private int buscarAlquilerAbierto(Cliente cliente, Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if(alquileres[indice] != null && alquileres[indice].getTurismo().getMatricula().equals(turismo.getMatricula())
+			if(alquileres[indice] != null && alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula())
 			   && alquileres[indice].getCliente().getDni().equals(cliente.getDni())
-			   && alquileres[indice].getTurismo().getDisponible()==false) {
+			   && alquileres[indice].getVehiculo().getDisponible()==false) {
 				encontrado = true;
 			}else {
 				indice++;

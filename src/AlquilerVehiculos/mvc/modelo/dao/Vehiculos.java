@@ -1,32 +1,32 @@
 package AlquilerVehiculos.mvc.modelo.dao;
 
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
-public class Turismos {
+public class Vehiculos {
 
-	private Turismo[] turismos;
+	private Vehiculo[] vehiculos;
 	private final int MAX_TURISMOS = 20;
 	
-	public Turismos () {
-		turismos = new Turismo[MAX_TURISMOS];
+	public Vehiculos () {
+		vehiculos = new Vehiculo[MAX_TURISMOS];
 	}
 	
-	public Turismo[] getTurismos() {
-		return turismos.clone();
+	public Vehiculo[] getVehiculos() {
+		return vehiculos.clone();
 	}
 	
 	/**
 	 * Método que añade un turismo al array de turismos.
 	 * Si la posición del array está ocupada o el 
 	 * array está completo, lanza la excepción.
-	 * @param turismo
+	 * @param vehiculo
 	 */
-	public void anadirTurismo (Turismo turismo) {
-		int indice = buscarPrimerIndiceLibreComprobandoExistencia(turismo);
+	public void anadirVehiculo (Vehiculo vehiculo) {
+		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);
 		
 		if (indiceNoSuperaTamano(indice)) {
-			turismos[indice] = new Turismo (turismo);
+			vehiculos[indice] = new Vehiculo (vehiculo);
 		}else {
 			throw new ExcepcionAlquilerVehiculos ("El array de turismos está lleno.");
 		}
@@ -38,24 +38,24 @@ public class Turismos {
 	 * @return true si no se ha superado el tamaño y false si lo ha hecho.
 	 */
 	private boolean indiceNoSuperaTamano(int indice) {
-		return indice < turismos.length;
+		return indice < vehiculos.length;
 	}
 	
 	/**
 	 * Comprueba la primera posición libre del array y lanza
 	 * una excepción si la matrícula del turismo pasada por parámetro 
 	 * ya está almacenada en el array.
-	 * @param turismo para añadir en caso de que no exista.
+	 * @param vehiculo para añadir en caso de que no exista.
 	 * @return la primera posición libre del array.
 	 */
-	private int buscarPrimerIndiceLibreComprobandoExistencia(Turismo turismo) {
+	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (turismos[indice] == null) {
+			if (vehiculos[indice] == null) {
 				encontrado = true;
-			}else if (turismos[indice].getMatricula().equals(turismo.getMatricula())) {
+			}else if (vehiculos[indice].getMatricula().equals(vehiculo.getMatricula())) {
 				throw new ExcepcionAlquilerVehiculos ("Ya existe un turismo con esa matrícula.");
 			}else {
 				indice++;
@@ -68,7 +68,7 @@ public class Turismos {
 	 * Método que elimina un turismo del array de Turismos.
 	 * @param matricula del vehículo a borrar.
 	 */
-	public void borrarTurismo (String matricula) {
+	public void borrarVehiculo (String matricula) {
 		int indice = buscarIndiceTurismo(matricula);
 		
 		if (indiceNoSuperaTamano(indice)) {
@@ -85,8 +85,8 @@ public class Turismos {
 	 * @param indice es la posición del array que ha quedado vacía.
 	 */
 	private void desplazarUnaPosicionHaciaLaIzquierda(int indice) {
-		for (int i = indice; i < turismos.length-1; i++) {
-			turismos[i] = turismos[i+1];
+		for (int i = indice; i < vehiculos.length-1; i++) {
+			vehiculos[i] = vehiculos[i+1];
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class Turismos {
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (turismos[indice] != null && turismos[indice].getMatricula().equals(matricula)) {
+			if (vehiculos[indice] != null && vehiculos[indice].getMatricula().equals(matricula)) {
 				encontrado = true;
 			}else {
 				indice++;
@@ -114,11 +114,11 @@ public class Turismos {
 	 * @param matricula del turismo buscado
 	 * @return el turismo buscado
 	 */
-	public Turismo buscarTurismo (String matricula) {
+	public Vehiculo buscarVehiculo (String matricula) {
 		int indice = buscarIndiceTurismo(matricula);
 			
 		if (indiceNoSuperaTamano(indice)) {
-			return new Turismo (turismos[indice]);
+			return new Vehiculo (vehiculos[indice]);
 		}else {
 			return null;
 		}

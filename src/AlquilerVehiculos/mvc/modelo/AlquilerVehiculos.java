@@ -2,23 +2,23 @@ package AlquilerVehiculos.mvc.modelo;
 
 import AlquilerVehiculos.mvc.modelo.dao.Alquileres;
 import AlquilerVehiculos.mvc.modelo.dao.Clientes;
-import AlquilerVehiculos.mvc.modelo.dao.Turismos;
+import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class AlquilerVehiculos {
 	
 	private Clientes clientes;
-	private Turismos turismos;
+	private Vehiculos vehiculos;
 	private Alquileres alquileres;
 	
 	public AlquilerVehiculos() {
 		
 		clientes = new Clientes();
-		turismos = new Turismos();
+		vehiculos = new Vehiculos();
 		alquileres = new Alquileres();
 		
 	}
@@ -39,28 +39,28 @@ public class AlquilerVehiculos {
 		return clientes.getClientes();
 	}
 	
-	public void anadirTurismo (Turismo turismo) {
-		turismos.anadirTurismo(turismo);
+	public void anadirVehiculo (Vehiculo vehiculo) {
+		vehiculos.anadirVehiculo(vehiculo);
 	}
 	
-	public void borrarTurismo(String matricula) {
-		turismos.borrarTurismo(matricula);
+	public void borrarVehiculo(String matricula) {
+		vehiculos.borrarVehiculo(matricula);
 	}
 	
-	public Turismo buscarTurismo (String matricula) {
-		return turismos.buscarTurismo(matricula);
+	public Vehiculo buscarVehiculo (String matricula) {
+		return vehiculos.buscarVehiculo(matricula);
 	}
 	
-	public Turismo[] obtenerTurismos() {
-		return turismos.getTurismos();
+	public Vehiculo[] obtenerVehiculos() {
+		return vehiculos.getVehiculos();
 	}
 	
-	public void abrirAlquiler (Cliente cliente, Turismo turismo) {
-		alquileres.abrirAlquiler(cliente, turismo);
+	public void abrirAlquiler (Cliente cliente, Vehiculo vehiculo) {
+		alquileres.abrirAlquiler(cliente, vehiculo);
 	}
 	
-	public void cerrarAlquiler (Cliente cliente, Turismo turismo) {
-		alquileres.cerrarAlquiler(cliente, turismo);
+	public void cerrarAlquiler (Cliente cliente, Vehiculo vehiculo) {
+		alquileres.cerrarAlquiler(cliente, vehiculo);
 	}
 	
 	public Alquiler[] obtenerAlquileres() {
@@ -77,17 +77,17 @@ public class AlquilerVehiculos {
 		anadirCliente(cliente2);
 		anadirCliente(cliente3);
 		
-		Turismo turismo1 = new Turismo ("4512BCD", "Opel", "Astra", 1100);
-		Turismo turismo2 = new Turismo ("7628HKG", "Citröen", "Xsara", 1900);
-		Turismo turismo3 = new Turismo ("2356CDH", "Hyunday", "Elantra", 1600);
+		Vehiculo vehiculo1 = new Vehiculo ("4512BCD", "Opel", "Astra", 1100);
+		Vehiculo vehiculo2 = new Vehiculo ("7628HKG", "Citröen", "Xsara", 1900);
+		Vehiculo vehiculo3 = new Vehiculo ("2356CDH", "Hyunday", "Elantra", 1600);
 		
-		anadirTurismo(turismo1);
-		anadirTurismo(turismo2);
-		anadirTurismo(turismo3);
+		anadirVehiculo(vehiculo1);
+		anadirVehiculo(vehiculo2);
+		anadirVehiculo(vehiculo3);
 		
-		abrirAlquiler(cliente1, turismo1);
-		abrirAlquiler(cliente2, turismo2);
-		abrirAlquiler(cliente3, turismo3);
+		abrirAlquiler(cliente1, vehiculo1);
+		abrirAlquiler(cliente2, vehiculo2);
+		abrirAlquiler(cliente3, vehiculo3);
 		
 	}
 

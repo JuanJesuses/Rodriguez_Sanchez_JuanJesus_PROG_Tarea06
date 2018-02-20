@@ -6,7 +6,7 @@ import java.util.Date;
 import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
-import AlquilerVehiculos.mvc.modelo.dominio.Turismo;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class Alquiler {
 	
@@ -16,15 +16,15 @@ public class Alquiler {
 	private final int MS_DIA = 1000*60*60*24;
 	private final double PRECIO_DIA = 30.0;
 	private Cliente cliente;
-	private Turismo turismo;
+	private Vehiculo vehiculo;
 		
-	public Alquiler (Cliente cliente, Turismo turismo) {
+	public Alquiler (Cliente cliente, Vehiculo vehiculo) {
 		
 		setCliente(cliente);
-		setTurismo(turismo);
+		setVehiculo(vehiculo);
 		fecha = new Date();
 		dias = 0;
-		turismo.setDisponible(false);
+		vehiculo.setDisponible(false);
 		
 	}
 	
@@ -47,26 +47,26 @@ public class Alquiler {
 		return cliente;
 	}
 	
-	private void setTurismo(Turismo turismo) {
-		if (turismo != null) {
-			this.turismo = turismo;
+	private void setVehiculo(Vehiculo vehiculo) {
+		if (vehiculo != null) {
+			this.vehiculo = vehiculo;
 		}else {
 			throw new ExcepcionAlquilerVehiculos("Para iniciar el alquiler debe agregar un vehículo.");
 		}
 	}
 
-	public Turismo getTurismo() {
-		return turismo;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 	
 	public double getPrecio() {
-		return PRECIO_DIA*getDias() + turismo.getCilindrada()/100;
+		return PRECIO_DIA*getDias() + vehiculo.getCilindrada()/100;
 	}
 	
 	public void close() {
 		Date entrega = new Date(); //entrega es la fecha de devolución del vehículo
 		dias = difDias(entrega, fecha); // dias son los días que el vehículo ha estado en alquiler
-		turismo.setDisponible(true); //Establce el turismo a disponible
+		vehiculo.setDisponible(true); //Establce el turismo a disponible
 	}
 	
 	private int difDias(Date fechaRecogida, Date fechaEntrega) {
@@ -78,7 +78,7 @@ public class Alquiler {
 	
 	@Override
 	public String toString() {
-		return "--:Alquiler:-- \nfecha: " + FORMATO_FECHA.format(getFecha()) + " DÍAS: " + dias + "\nPRECIO: " + getPrecio() + "\n" + cliente + "\n" + turismo + "";
+		return "--:Alquiler:-- \nfecha: " + FORMATO_FECHA.format(getFecha()) + " DÍAS: " + dias + "\nPRECIO: " + getPrecio() + "\n" + cliente + "\n" + vehiculo + "";
 	}
 
 }
