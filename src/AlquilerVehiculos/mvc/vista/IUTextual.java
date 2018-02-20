@@ -170,5 +170,4 @@ public class IUTextual {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
 	}
-
 }

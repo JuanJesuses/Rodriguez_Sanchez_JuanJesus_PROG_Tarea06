@@ -61,8 +61,7 @@ public class Alquileres {
 			if (alquileres[indice] == null) {
 				encontrado = true;
 			}else if (alquileres[indice].getTurismo().getMatricula().equals(turismos.getMatricula())
-					&&alquileres[indice].getTurismo().getDisponible() == false
-					/*&& alquileres[indice].getCliente().getDni().equals(clientes.getDni())*/) {
+					&&alquileres[indice].getTurismo().getDisponible() == false){
 				throw new ExcepcionAlquilerVehiculos("Ya existe un alquiler abierto para ese turismo.");
 			}else {
 				indice++;
@@ -80,10 +79,11 @@ public class Alquileres {
 	public void cerrarAlquiler (Cliente cliente, Turismo turismo) {
 		int indice = buscarAlquilerAbierto(cliente, turismo);
 		
-		if (indiceNoSuperaTamano(indice))
+		if (indiceNoSuperaTamano(indice)) {
 			alquileres[indice].close();
-		else
+		}else {
 			throw new ExcepcionAlquilerVehiculos ("No hay ningún alquiler abierto para ese vehículo.");
+		}
 	}
 	
 	/**

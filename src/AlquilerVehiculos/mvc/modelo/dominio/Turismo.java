@@ -12,6 +12,7 @@ public class Turismo {
 	private boolean disponible;
 	
 	public Turismo (Turismo turismo) {
+		
 		matricula = turismo.getMatricula();
 		marca = turismo.getMarca();
 		modelo = turismo.getModelo();

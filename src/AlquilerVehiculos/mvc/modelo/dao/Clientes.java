@@ -25,11 +25,13 @@ public class Clientes {
 	public void anadirCliente (Cliente cliente) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(cliente);
 		
-		if (indiceNoSuperaTamano(indice))
+		if (indiceNoSuperaTamano(indice)) {
 			clientes[indice] = new Cliente (cliente);
-		else
+		}else {
 			throw new ExcepcionAlquilerVehiculos ("El array de clientes está lleno.");
+		}
 	}
+	
 	/**
 	 * Comprueba que no se supera el tamaño del array.
 	 * @param indice posición dentro del array.
@@ -52,12 +54,13 @@ public class Clientes {
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (clientes[indice] == null)
+			if (clientes[indice] == null) {
 				encontrado = true;
-			else if (clientes[indice].getDni().equals(cliente.getDni()))
+			}else if (clientes[indice].getDni().equals(cliente.getDni())) {
 				throw new ExcepcionAlquilerVehiculos("Ya existe un cliente con ese DNI.");
-			else
+			}else {
 				indice++;
+			}
 		}
 		return indice;
 	}
@@ -98,10 +101,11 @@ public class Clientes {
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (clientes[indice] != null && clientes[indice].getDni().equals(dni))
+			if (clientes[indice] != null && clientes[indice].getDni().equals(dni)) {
 				encontrado = true;
-			else
+			}else {
 				indice++;
+			}
 		}
 		return indice;
 	}

@@ -53,12 +53,13 @@ public class Turismos {
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (turismos[indice] == null)
+			if (turismos[indice] == null) {
 				encontrado = true;
-			else if (turismos[indice].getMatricula().equals(turismo.getMatricula()))
+			}else if (turismos[indice].getMatricula().equals(turismo.getMatricula())) {
 				throw new ExcepcionAlquilerVehiculos ("Ya existe un turismo con esa matrícula.");
-			else
+			}else {
 				indice++;
+			}
 		}
 		return indice;
 	}
@@ -72,7 +73,6 @@ public class Turismos {
 		
 		if (indiceNoSuperaTamano(indice)) {
 			desplazarUnaPosicionHaciaLaIzquierda(indice);
-			//turismos[turismos.length - 1] = null;
 		}else {
 			throw new ExcepcionAlquilerVehiculos ("El turismo a eliminar no existe.");
 		}	
@@ -100,10 +100,11 @@ public class Turismos {
 		boolean encontrado = false;
 		
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
-			if (turismos[indice] != null && turismos[indice].getMatricula().equals(matricula))
+			if (turismos[indice] != null && turismos[indice].getMatricula().equals(matricula)) {
 				encontrado = true;
-			else
+			}else {
 				indice++;
+			}
 		}
 		return indice;
 	}
@@ -122,6 +123,4 @@ public class Turismos {
 			return null;
 		}
 	}
-	
-	
 }
