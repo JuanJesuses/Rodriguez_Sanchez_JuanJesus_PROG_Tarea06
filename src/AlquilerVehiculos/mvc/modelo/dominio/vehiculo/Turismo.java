@@ -22,5 +22,4 @@ public class Turismo extends Vehiculo{
 		factorTurismo = getDatosTecnicosVehiculo().getCilindrada()/50;
 		return factorTurismo;
 	}
-		
 }
