@@ -7,6 +7,7 @@ import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import utilidades.Consola;
 
@@ -119,9 +120,10 @@ public class IUTextual {
 	public void anadirVehiculo() {
 		Consola.mostrarCabecera("Añadir Vehículo");
 		Vehiculo vehiculo = Consola.leerVehiculo();
-		
+		int tipoVehiculo = Consola.elegirTipoVehiculo();		
 		try {
-			controlador.anadirVehiculo(vehiculo);
+			//int tipoVehiculo = Consola.elegirOpcion();
+			controlador.anadirVehiculo(vehiculo, TipoVehiculo.getTipoVehiculoSegunOrdinal(tipoVehiculo));
 			System.out.println("Vehículo añadido de forma satisfactoria.");
 		}catch (Exception e){
 			System.out.printf("ERROR: %s%n%n", e.getMessage());

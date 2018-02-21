@@ -34,7 +34,7 @@ public enum TipoVehiculo {
 		return tipoVehiculo;
 	}
 	
-	public TipoVehiculo getTipoVehiculoSegunordinal(int ordinal) {
+	public static TipoVehiculo getTipoVehiculoSegunOrdinal(int ordinal) {
 		if(esOrdinalValido(ordinal)) {
 			return values()[ordinal];
 		}else {
@@ -42,7 +42,7 @@ public enum TipoVehiculo {
 		}
 	}
 	
-	public boolean esOrdinalValido(int ordinal) {
+	public static boolean esOrdinalValido(int ordinal) {
 		return (ordinal >= 0 && ordinal <= values().length -1);
 	}
 	

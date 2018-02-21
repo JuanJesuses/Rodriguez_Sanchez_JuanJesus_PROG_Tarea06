@@ -1,15 +1,16 @@
 package AlquilerVehiculos.mvc.modelo.dao;
 
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class Vehiculos {
 
 	private Vehiculo[] vehiculos;
-	private final int MAX_TURISMOS = 20;
+	private final int MAX_VEHICULOS = 20;
 	
 	public Vehiculos () {
-		vehiculos = new Vehiculo[MAX_TURISMOS];
+		vehiculos = new Vehiculo[MAX_VEHICULOS];
 	}
 	
 	public Vehiculo[] getVehiculos() {
@@ -22,13 +23,14 @@ public class Vehiculos {
 	 * array está completo, lanza la excepción.
 	 * @param vehiculo
 	 */
-	public void anadirVehiculo (Vehiculo vehiculo) {
+	public void anadirVehiculo (Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);
 		
 		if (indiceNoSuperaTamano(indice)) {
-			vehiculos[indice] = new Vehiculo (vehiculo);
+			vehiculos[indice] = tipoVehiculo.getInstancia(vehiculo.getMatricula(), vehiculo.getMarca(), 
+					  vehiculo.getModelo(), vehiculo.getDatosTecnicosVehiculo());
 		}else {
-			throw new ExcepcionAlquilerVehiculos ("El array de turismos está lleno.");
+			throw new ExcepcionAlquilerVehiculos ("El array de vehículos está lleno.");
 		}
 	}
 	
@@ -69,7 +71,7 @@ public class Vehiculos {
 	 * @param matricula del vehículo a borrar.
 	 */
 	public void borrarVehiculo (String matricula) {
-		int indice = buscarIndiceTurismo(matricula);
+		int indice = buscarIndiceVehiculo(matricula);
 		
 		if (indiceNoSuperaTamano(indice)) {
 			desplazarUnaPosicionHaciaLaIzquierda(indice);
@@ -95,7 +97,7 @@ public class Vehiculos {
 	 * @param matricula para buscar el turismo
 	 * @return la posición del array donde se encuentra el turismo buscado.
 	 */
-	private int buscarIndiceTurismo(String matricula) {
+	private int buscarIndiceVehiculo(String matricula) {
 		int indice = 0;
 		boolean encontrado = false;
 		
@@ -115,10 +117,11 @@ public class Vehiculos {
 	 * @return el turismo buscado
 	 */
 	public Vehiculo buscarVehiculo (String matricula) {
-		int indice = buscarIndiceTurismo(matricula);
-			
+		int indice = buscarIndiceVehiculo(matricula);
+		
+		Vehiculo vehiculo = null;
 		if (indiceNoSuperaTamano(indice)) {
-			return new Vehiculo (vehiculos[indice]);
+			return (vehiculos[indice]);
 		}else {
 			return null;
 		}

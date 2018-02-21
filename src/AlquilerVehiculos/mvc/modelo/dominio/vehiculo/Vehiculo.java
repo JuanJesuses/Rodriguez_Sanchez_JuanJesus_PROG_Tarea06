@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import utilidades.Consola;
 
 public abstract class Vehiculo {
 	
@@ -33,7 +34,7 @@ public abstract class Vehiculo {
 		setModelo(modelo);
 		setDatosTecnicosVehiculo(datosTecnicosVehiculo);
 		setDisponible(true);
-		
+				
 	}
 	
 	public abstract TipoVehiculo getTipoVehiculo();
@@ -99,10 +100,11 @@ public abstract class Vehiculo {
 		this.disponible = disponible;
 		
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Vehiculo Matricula: " + matricula + " Marca: " + marca + " Modelo: " + modelo + " Disponible: "
-				+ disponible + " Datos Técnicos del Vehículo: " + datosTecnicosVehiculo + "";
+		return String.format("-::VEHÍCULO::- \nMatrícula: %s Marca: %s Modelo: %s Disponible: %b\nDatos Técnicos Vehículo: %s Tipo Vehículo: %s",
+				matricula, marca, modelo, disponible, datosTecnicosVehiculo, getTipoVehiculo());
 	}
+	
 }

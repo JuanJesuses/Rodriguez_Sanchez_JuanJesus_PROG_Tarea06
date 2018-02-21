@@ -34,25 +34,25 @@ public enum Opcion {
 		}
 	},
 	
-	ANADIR_TURISMO("Añadir Vehículo"){
+	ANADIR_VEHICULO("Añadir Vehículo"){
 		public void ejecutar() {
 			vista.anadirVehiculo();
 		}
 	},
 	
-	BORRAR_TURISMO("Borrar Vehículo"){
+	BORRAR_VEHICULO("Borrar Vehículo"){
 		public void ejecutar() {
 			vista.borrarVehiculo();
 		}
 	},
 	
-	BUSCAR_TURISMO("Buscar Vehículo"){
+	BUSCAR_VEHICULO("Buscar Vehículo"){
 		public void ejecutar() {
 			vista.buscarVehiculo();
 		}
 	},
 	
-	LISTAR_TURISMO("Listar Vehículos"){
+	LISTAR_VEHICULO("Listar Vehículos"){
 		public void ejecutar() {
 			vista.listaVehiculos();
 		}

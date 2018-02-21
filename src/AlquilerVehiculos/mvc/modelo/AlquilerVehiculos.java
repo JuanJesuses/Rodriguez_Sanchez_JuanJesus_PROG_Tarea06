@@ -8,6 +8,7 @@ import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculos;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class AlquilerVehiculos {
@@ -40,8 +41,8 @@ public class AlquilerVehiculos {
 		return clientes.getClientes();
 	}
 	
-	public void anadirVehiculo (Vehiculo vehiculo) {
-		vehiculos.anadirVehiculo(vehiculo);
+	public void anadirVehiculo (Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
+		vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
 	}
 	
 	public void borrarVehiculo(String matricula) {
@@ -78,13 +79,13 @@ public class AlquilerVehiculos {
 		anadirCliente(cliente2);
 		anadirCliente(cliente3);
 		
-		Vehiculo vehiculo1 = new Vehiculo ("4512BCD", "Opel", "Astra", new DatosTecnicosVehiculos (1100, 5, 3500));
-		Vehiculo vehiculo2 = new Vehiculo ("7628HKG", "Citröen", "Xsara", new DatosTecnicosVehiculos (1900, 7, 3500));
-		Vehiculo vehiculo3 = new Vehiculo ("2356CDH", "Hyunday", "Elantra", new DatosTecnicosVehiculos (1600, 5, 3500));
+		Vehiculo vehiculo1 = TipoVehiculo.TURISMO.getInstancia("0236NMJ", "Audi", "Q7", new DatosTecnicosVehiculos (3000, 7, 3500));
+		Vehiculo vehiculo2 = TipoVehiculo.AUTOBUS.getInstancia("7628HKG", "PEGASO", "NONAINO", new DatosTecnicosVehiculos (5000, 54, 12500));
+		Vehiculo vehiculo3 = TipoVehiculo.DE_CARGA.getInstancia("2356CDH", "IVECO", "DAILY", new DatosTecnicosVehiculos (5000, 6, 35000));
 		
-		anadirVehiculo(vehiculo1);
-		anadirVehiculo(vehiculo2);
-		anadirVehiculo(vehiculo3);
+		anadirVehiculo(vehiculo1, TipoVehiculo.TURISMO);
+		anadirVehiculo(vehiculo2, TipoVehiculo.AUTOBUS);
+		anadirVehiculo(vehiculo3, TipoVehiculo.DE_CARGA);
 		
 		abrirAlquiler(cliente1, vehiculo1);
 		abrirAlquiler(cliente2, vehiculo2);

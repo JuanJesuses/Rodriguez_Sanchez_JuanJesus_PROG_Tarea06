@@ -6,6 +6,7 @@ import AlquilerVehiculos.mvc.modelo.dao.Clientes;
 import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
+import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import AlquilerVehiculos.mvc.vista.IUTextual;
 
@@ -25,8 +26,8 @@ public class ControladorAlquilerVehiculos {
 		vista.comenzar();
 	}
 	
-	public void anadirVehiculo(Vehiculo vehiculo) {
-		modelo.anadirVehiculo(vehiculo);
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
+		modelo.anadirVehiculo(vehiculo, tipoVehiculo);
 	}
 	
 	public void borrarVehiculo(String matricula) {
