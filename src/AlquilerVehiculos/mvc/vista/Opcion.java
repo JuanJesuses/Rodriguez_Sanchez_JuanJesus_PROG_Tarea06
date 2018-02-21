@@ -77,7 +77,7 @@ public enum Opcion {
 	};
 	
 	private String mensaje;
-	private static IUTextual vista;
+	private static IVistaAlquilerVehiculos vista;
 	
 	private Opcion(String mensaje) {
 		this.mensaje = mensaje;
@@ -89,7 +89,7 @@ public enum Opcion {
 		return mensaje;
 	}
 	
-	public static void setVista(IUTextual vista) {
+	public static void setVista(IVistaAlquilerVehiculos vista) {
 		Opcion.vista = vista;
 	}
 	

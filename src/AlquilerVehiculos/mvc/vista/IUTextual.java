@@ -1,6 +1,6 @@
 package AlquilerVehiculos.mvc.vista;
 
-import AlquilerVehiculos.mvc.controlador.ControladorAlquilerVehiculos;
+import AlquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dao.Alquileres;
 import AlquilerVehiculos.mvc.modelo.dao.Clientes;
 import AlquilerVehiculos.mvc.modelo.dao.Vehiculos;
@@ -11,18 +11,26 @@ import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import utilidades.Consola;
 
-public class IUTextual {
+public class IUTextual implements IVistaAlquilerVehiculos {
 	
-	ControladorAlquilerVehiculos controlador;
+	IControladorAlquilerVehiculos controlador;
 	
 	public IUTextual () {
 		Opcion.setVista(this);
 	}
 	
-	public void setControlador (ControladorAlquilerVehiculos controlador) {
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#setControlador(AlquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculos)
+	 */
+	@Override
+	public void setControlador (IControladorAlquilerVehiculos controlador) {
 		this.controlador = controlador;
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#comenzar()
+	 */
+	@Override
 	public void comenzar() {
 		int ordinalOpcion;
 		
@@ -34,10 +42,18 @@ public class IUTextual {
 		}while(ordinalOpcion != Opcion.SALIR.ordinal());
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#salir()
+	 */
+	@Override
 	public void salir() {
 		System.out.println("Ha escogido salir del programa.");
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#listarAlquileres()
+	 */
+	@Override
 	public void listarAlquileres() {
 		Consola.mostrarCabecera("Listar Alquileres.");
 		
@@ -49,6 +65,10 @@ public class IUTextual {
 		System.out.println("");
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#cerrarAlquiler()
+	 */
+	@Override
 	public void cerrarAlquiler() {
 		Consola.mostrarCabecera("Cerrar alquiler");
 		String dni = Consola.leerDni();
@@ -68,6 +88,10 @@ public class IUTextual {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#abrirAlquiler()
+	 */
+	@Override
 	public void abrirAlquiler() {
 		Consola.mostrarCabecera("Abrir Alquiler");
 		String dni = Consola.leerDni();
@@ -87,6 +111,10 @@ public class IUTextual {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#listaVehiculos()
+	 */
+	@Override
 	public void listaVehiculos() {
 		Consola.mostrarCabecera("Listar Vehículos");
 		
@@ -98,6 +126,10 @@ public class IUTextual {
 		System.out.println("");
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#buscarVehiculo()
+	 */
+	@Override
 	public void buscarVehiculo() {
 		Consola.mostrarCabecera("Buscar Vehículo");
 		String matricula = Consola.leerMatricula();
@@ -106,6 +138,10 @@ public class IUTextual {
 		System.out.printf("%s%n%n", mensaje);
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#borrarVehiculo()
+	 */
+	@Override
 	public void borrarVehiculo() {
 		Consola.mostrarCabecera("Borrar Vehículo");
 		String matricula = Consola.leerMatricula();
@@ -117,12 +153,16 @@ public class IUTextual {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#anadirVehiculo()
+	 */
+	@Override
 	public void anadirVehiculo() {
 		Consola.mostrarCabecera("Añadir Vehículo");
-		Vehiculo vehiculo = Consola.leerVehiculo();
 		int tipoVehiculo = Consola.elegirTipoVehiculo();		
+		
 		try {
-			//int tipoVehiculo = Consola.elegirOpcion();
+			Vehiculo vehiculo = Consola.leerVehiculo();
 			controlador.anadirVehiculo(vehiculo, TipoVehiculo.getTipoVehiculoSegunOrdinal(tipoVehiculo));
 			System.out.println("Vehículo añadido de forma satisfactoria.");
 		}catch (Exception e){
@@ -130,6 +170,10 @@ public class IUTextual {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#listarClientes()
+	 */
+	@Override
 	public void listarClientes() {
 		Consola.mostrarCabecera("Listar Clientes");
 		
@@ -141,6 +185,10 @@ public class IUTextual {
 		System.out.println("");
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#buscarCliente()
+	 */
+	@Override
 	public void buscarCliente() {
 		Consola.mostrarCabecera("Buscar Cliente");
 		String dni = Consola.leerDni();
@@ -149,6 +197,10 @@ public class IUTextual {
 		System.out.printf("%s%n%n", mensaje);
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#borrarCliente()
+	 */
+	@Override
 	public void borrarCliente() {
 		Consola.mostrarCabecera("Eliminar Cliente");
 		String dni =  Consola.leerDni();
@@ -161,6 +213,10 @@ public class IUTextual {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see AlquilerVehiculos.mvc.vista.IVistaAlquilerVehiculos#anadirCliente()
+	 */
+	@Override
 	public void anadirCliente() {
 		Consola.mostrarCabecera("Añadir Cliente");
 		Cliente cliente = Consola.leerCliente();
