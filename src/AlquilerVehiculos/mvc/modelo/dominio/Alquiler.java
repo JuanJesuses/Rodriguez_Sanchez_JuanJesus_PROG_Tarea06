@@ -8,6 +8,12 @@ import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
+/**
+ * Clase que gestiona los clientes y vehículos
+ * implicados en un alquiler
+ * @author john
+ *
+ */
 public class Alquiler {
 	
 	private Date fecha;
@@ -63,12 +69,23 @@ public class Alquiler {
 		return PRECIO_DIA*getDias();
 	}
 	
+	/**
+	 * Método que establece la fecha de entrega del vehículo,
+	 * la cantidad de días que ha estado alquilado y pone
+	 * el vehículo disponible para un nuevo alquiler
+	 */
 	public void close() {
 		Date entrega = new Date(); //entrega es la fecha de devolución del vehículo
 		dias = difDias(entrega, fecha); // dias son los días que el vehículo ha estado en alquiler
 		vehiculo.setDisponible(true); //Establce el turismo a disponible
 	}
 	
+	/**
+	 * Método que calcula la diferencia entre dos fechas
+	 * @param fechaRecogida
+	 * @param fechaEntrega
+	 * @return el número de días transcurrido entre esas fechas
+	 */
 	private int difDias(Date fechaRecogida, Date fechaEntrega) {
 		long milisegundos = fechaRecogida.getTime() - fechaEntrega.getTime();
 		long dias = milisegundos / MS_DIA;

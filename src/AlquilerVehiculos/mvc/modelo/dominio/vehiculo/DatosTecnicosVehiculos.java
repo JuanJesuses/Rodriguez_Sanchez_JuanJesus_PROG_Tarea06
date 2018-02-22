@@ -2,25 +2,40 @@ package AlquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
+/**
+ * Clase que instancia los datos técnicos de los vehículos
+ * @author john
+ *
+ */
 public class DatosTecnicosVehiculos {
 	
 	private int cilindrada;
 	private int numeroPlazas;
 	private int pma;
 	
-	public DatosTecnicosVehiculos (DatosTecnicosVehiculos datosTecnicosVehiculos) {
-		
-		cilindrada = datosTecnicosVehiculos.getCilindrada();
-		numeroPlazas = datosTecnicosVehiculos.getCilindrada();
-		pma = datosTecnicosVehiculos.getPma();
-		
-	}
-	
+	/**
+	 * Constructor con parámetros
+	 * @param cilindrada
+	 * @param numeroPlazas
+	 * @param pma
+	 */
 	public DatosTecnicosVehiculos (int cilindrada, int numeroPlazas, int pma) {
 		
 		setCilindrada(cilindrada);
 		setNumeroPlazas(numeroPlazas);
 		setPma(pma);
+		
+	}
+	
+	/**
+	 * Constructor copia
+	 * @param datosTecnicosVehiculos
+	 */
+	public DatosTecnicosVehiculos (DatosTecnicosVehiculos datosTecnicosVehiculos) {
+		
+		cilindrada = datosTecnicosVehiculos.getCilindrada();
+		numeroPlazas = datosTecnicosVehiculos.getCilindrada();
+		pma = datosTecnicosVehiculos.getPma();
 		
 	}
 	

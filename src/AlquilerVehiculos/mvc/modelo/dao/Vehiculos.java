@@ -4,15 +4,29 @@ import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import AlquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
+/**
+ * Clase que contiene el array donde se almacenarán los
+ * objetos de tipo vehículo
+ * @author john
+ *
+ */
 public class Vehiculos {
 
 	private Vehiculo[] vehiculos;
 	private final int MAX_VEHICULOS = 20;
 	
+	/**
+	 * Constructor de la clase que crea el array de Vehiculos
+	 * y lo inicializa a MAX_VEHICULOS
+	 */
 	public Vehiculos () {
 		vehiculos = new Vehiculo[MAX_VEHICULOS];
 	}
 	
+	/**
+	 * Método que devuelve una copia del array
+	 * @return el array de vehículos
+	 */
 	public Vehiculo[] getVehiculos() {
 		return vehiculos.clone();
 	}

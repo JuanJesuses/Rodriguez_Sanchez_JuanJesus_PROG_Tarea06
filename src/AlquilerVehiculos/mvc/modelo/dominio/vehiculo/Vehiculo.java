@@ -6,6 +6,11 @@ import java.util.regex.Pattern;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import utilidades.Consola;
 
+/**
+ * Clase padre de la que heredan las clases Autobús, DeCarga y Turismo
+ * @author john
+ *
+ */
 public abstract class Vehiculo {
 	
 	private String matricula;
@@ -17,15 +22,13 @@ public abstract class Vehiculo {
 	private final double FACTOR_NUMERO_PLAZAS = 0.0;
 	private final double FACTOR_PMA = 0.0;
 	
-	public Vehiculo (Vehiculo vehiculo) {
-		
-		matricula = vehiculo.getMatricula();
-		marca = vehiculo.getMarca();
-		modelo = vehiculo.getModelo();
-		datosTecnicosVehiculo = vehiculo.getDatosTecnicosVehiculo();
-		this.disponible = vehiculo.disponible;
-		
-	}
+	/**
+	 * Constructor con parámetros
+	 * @param matricula
+	 * @param marca
+	 * @param modelo
+	 * @param datosTecnicosVehiculo
+	 */
 	
 	public Vehiculo (String matricula, String marca, String modelo, DatosTecnicosVehiculos datosTecnicosVehiculo) {
 		
@@ -37,10 +40,30 @@ public abstract class Vehiculo {
 				
 	}
 	
+	/**
+	 * Constructor copia
+	 * @param vehiculo
+	 */
+	public Vehiculo (Vehiculo vehiculo) {
+		
+		matricula = vehiculo.getMatricula();
+		marca = vehiculo.getMarca();
+		modelo = vehiculo.getModelo();
+		datosTecnicosVehiculo = vehiculo.getDatosTecnicosVehiculo();
+		this.disponible = vehiculo.disponible;
+		
+	}
+	
 	public abstract TipoVehiculo getTipoVehiculo();
 	
 	public abstract double getPrecioEspecifico();
 	
+	/**
+	 * Método que comprueba que el patŕon alfanumérico 
+	 * introducido para la matrícula, es válido 
+	 * @param matricula
+	 * @return
+	 */
 	private boolean compruebaMatricula(String matricula) {
 		Pattern patron = Pattern.compile("[0-9]{4}[B-DF-HJ-NP-TV-Z]{3}");
 		Matcher emparejador = patron.matcher(matricula);

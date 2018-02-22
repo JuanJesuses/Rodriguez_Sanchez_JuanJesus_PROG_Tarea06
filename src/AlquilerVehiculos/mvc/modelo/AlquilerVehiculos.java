@@ -17,6 +17,10 @@ public class AlquilerVehiculos implements IModeloAlquilerVehiculos {
 	private Vehiculos vehiculos;
 	private Alquileres alquileres;
 	
+	/**
+	 * Constructor de la clase Alquiler Vehiculos que instancia
+	 * los objetos Clientes, Vehiculos y Alquileres
+	 */
 	public AlquilerVehiculos() {
 		
 		clientes = new Clientes();

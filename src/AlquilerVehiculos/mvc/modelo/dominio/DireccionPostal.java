@@ -3,18 +3,34 @@ package AlquilerVehiculos.mvc.modelo.dominio;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Clase que gestiona la dirección postal de los clientes
+ * @author john
+ *
+ */
 public class DireccionPostal {
 	
 	private String calle;
 	private String localidad;
 	private String codigoPostal;
-
+	
+	/**
+	 * Constructor con parámetros que cambia el estado
+	 * del objeto a través de los métodos set
+	 * @param calle
+	 * @param localidad
+	 * @param codigoPostal
+	 */
 	public DireccionPostal(String calle, String localidad, String codigoPostal) {
 		setCalle(calle);
 		setLocalidad(localidad);
 		setCodigoPostal(codigoPostal);
 	}
 	
+	/**
+	 * Constructor copia
+	 * @param direccionPostal
+	 */
 	public DireccionPostal (DireccionPostal direccionPostal) {
 		calle = direccionPostal.getCalle();
 		localidad = direccionPostal.getLocalidad();
@@ -57,6 +73,12 @@ public class DireccionPostal {
 		return codigoPostal;
 	}
 	
+	/**
+	 * Método que comprueba que el patrón para el código postal
+	 * introducido por teclado, es correcto
+	 * @param codigoPostal
+	 * @return
+	 */
 	private boolean compruebaCodigoPostal(String codigoPostal) {
 		Pattern patron = Pattern.compile("[0-9]{5}");
 		Matcher emparejador = patron.matcher(codigoPostal);

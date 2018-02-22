@@ -34,6 +34,12 @@ public enum TipoVehiculo {
 		return tipoVehiculo;
 	}
 	
+	/**
+	 * Método que devuelve el tipo de vehiculo dependiendo
+	 * del número seleccionado
+	 * @param ordinal números de 0 a 2
+	 * @return el ordinal seleccionado
+	 */
 	public static TipoVehiculo getTipoVehiculoSegunOrdinal(int ordinal) {
 		if(esOrdinalValido(ordinal)) {
 			return values()[ordinal];
@@ -42,6 +48,12 @@ public enum TipoVehiculo {
 		}
 	}
 	
+	/**
+	 * Comprueba que el número de orden introducido está 
+	 * dentro del rango
+	 * @param ordinal
+	 * @return
+	 */
 	public static boolean esOrdinalValido(int ordinal) {
 		return (ordinal >= 0 && ordinal <= values().length -1) ? true : false;
 	}

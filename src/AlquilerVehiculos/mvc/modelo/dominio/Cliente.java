@@ -3,6 +3,11 @@ package AlquilerVehiculos.mvc.modelo.dominio;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Clase que gestiona los clientes
+ * @author john
+ *
+ */
 public class Cliente {
 	private String nombre;
 	private String dni;
@@ -10,13 +15,14 @@ public class Cliente {
 	private int identificador;
 	private static int ultimoIdentificador;
 	
-	public Cliente(Cliente cliente) {
-		nombre = cliente.getNombre();
-		dni = cliente.getDni();
-		direccionPostal = cliente.getDireccionPostal();
-		identificador = cliente.getIdentificador();
-	}
 	
+	/**
+	 * Constructor con parámetros que cambia el estado del objeto 
+	 * a través de los métodos set
+	 * @param nombre
+	 * @param dni
+	 * @param direccionPostal
+	 */
 	public Cliente (String nombre, String dni, DireccionPostal direccionPostal) {
 		
 		setNombre(nombre);
@@ -25,10 +31,28 @@ public class Cliente {
 		asignarNuevoIdentificador();
 	}
 	
+	/**
+	 * Constructor copia
+	 * @param cliente
+	 */
+	public Cliente(Cliente cliente) {
+		nombre = cliente.getNombre();
+		dni = cliente.getDni();
+		direccionPostal = cliente.getDireccionPostal();
+		identificador = cliente.getIdentificador();
+	}
+	
 	private void asignarNuevoIdentificador() {
 		ultimoIdentificador++;
 		identificador = ultimoIdentificador;
 	}
+	
+	/**
+	 * Método que comprueba que el patrón del DNI
+	 * introducido por teclado, es correcto
+	 * @param dni
+	 * @return
+	 */
 	private boolean compruebaDni(String dni) {
 		Pattern patron = Pattern.compile("[0-9]{8}[A-Z]");
 		Matcher emparejador = patron.matcher(dni);

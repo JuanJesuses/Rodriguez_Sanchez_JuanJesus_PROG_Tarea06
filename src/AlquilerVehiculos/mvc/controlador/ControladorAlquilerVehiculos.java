@@ -15,6 +15,11 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	IModeloAlquilerVehiculos modelo;
 	IVistaAlquilerVehiculos vista;
 	
+	/**
+	 * Constructor que crea un controlador y recibe dos parámetros
+	 * @param modelo
+	 * @param vista
+	 */
 	public ControladorAlquilerVehiculos(IModeloAlquilerVehiculos modelo, IVistaAlquilerVehiculos vista) {
 		this.vista = vista;
 		this.modelo =modelo;
@@ -118,6 +123,10 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 		return modelo.obtenerAlquileres();
 	}
 	
+	/**
+	 * Método que llama al método que añade los datos de prueba
+	 * para comprobar el funcionamiento de la aplización
+	 */
 	public void anadirDatosPrueba() {
 		modelo.anadirDatosPrueba();
 	}

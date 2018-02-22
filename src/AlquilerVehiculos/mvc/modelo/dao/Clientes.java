@@ -3,15 +3,29 @@ package AlquilerVehiculos.mvc.modelo.dao;
 import AlquilerVehiculos.mvc.modelo.dominio.Cliente;
 import AlquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
+/**
+ * Clase que contiene el array donde se almacenarán
+ * los objetos de tipo Cliente
+ * @author john
+ *
+ */
 public class Clientes {
 
 	private Cliente[] clientes;
 	private final int MAX_CLIENTES = 20;
 	
+	/**
+	 * Constructor de la clase que crea el array
+	 * y lo inicializa a MAX_CLIENTES
+	 */
 	public Clientes() {
 		clientes = new Cliente[MAX_CLIENTES];
 	}
 	
+	/**
+	 * Método de tipo array que devuelve una copia del array
+	 * @return el array de clientes
+	 */
 	public Cliente[] getClientes() {
 		return clientes.clone();
 	}
