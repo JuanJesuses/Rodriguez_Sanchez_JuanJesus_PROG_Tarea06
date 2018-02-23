@@ -18,9 +18,9 @@ public abstract class Vehiculo {
 	private String modelo;
 	private boolean disponible;
 	private DatosTecnicosVehiculos datosTecnicosVehiculo;
-	private final double FACTOR_CILINDRADA = 0.0;
-	private final double FACTOR_NUMERO_PLAZAS = 0.0;
-	private final double FACTOR_PMA = 0.0;
+	private final double FACTOR_CILINDRADA = 50.0;
+	private final double FACTOR_NUMERO_PLAZAS = 1.0;
+	private final double FACTOR_PMA = 20.0;
 	
 	/**
 	 * Constructor con parámetros
@@ -124,6 +124,18 @@ public abstract class Vehiculo {
 		
 	}
 	
+	public double getFACTOR_CILINDRADA() {
+		return FACTOR_CILINDRADA;
+	}
+	
+	public double getFACTOR_NUMERO_PLAZAS() {
+		return FACTOR_NUMERO_PLAZAS;
+	}
+	
+	public double getFACTOR_PMA() {
+		return FACTOR_PMA;
+	}
+		
 	@Override
 	public String toString() {
 		return String.format("-::VEHÍCULO::- \nMatrícula: %s Marca: %s Modelo: %s Disponible: %b\nDatos Técnicos Vehículo: %s Tipo Vehículo: %s",

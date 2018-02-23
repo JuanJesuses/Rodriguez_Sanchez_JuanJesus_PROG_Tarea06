@@ -7,7 +7,7 @@ package AlquilerVehiculos.mvc.modelo.dominio.vehiculo;
  */
 public class Autobus extends Vehiculo {
 	
-	private double precioAutobus = 0.0;
+	private double factorPrecioAutobus = getDatosTecnicosVehiculo().getCilindrada();
 	
 	/**
 	 * Constructor con parámetros
@@ -35,8 +35,7 @@ public class Autobus extends Vehiculo {
 	
 	@Override
 	public double getPrecioEspecifico() {
-		precioAutobus = (getDatosTecnicosVehiculo().getCilindrada()/50) + 1 * getDatosTecnicosVehiculo().getNumeroPlazas();
-		return precioAutobus;
+		return factorPrecioAutobus / getFACTOR_CILINDRADA() + (getFACTOR_NUMERO_PLAZAS() * getDatosTecnicosVehiculo().getNumeroPlazas());
 	}
 
 }

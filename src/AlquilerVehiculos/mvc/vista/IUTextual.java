@@ -219,9 +219,10 @@ public class IUTextual implements IVistaAlquilerVehiculos {
 	@Override
 	public void anadirCliente() {
 		Consola.mostrarCabecera("Añadir Cliente");
-		Cliente cliente = Consola.leerCliente();
+		//Cliente cliente = Consola.leerCliente();
 		
 		try {
+			Cliente cliente = Consola.leerCliente();
 			controlador.anadirCliente(cliente);
 			System.out.println("El cliente se ha añadido de forma satisfactoria.");
 		}catch(Exception e) {

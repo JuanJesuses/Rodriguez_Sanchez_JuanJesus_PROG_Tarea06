@@ -66,7 +66,7 @@ public class Alquiler {
 	}
 	
 	public double getPrecio() {
-		return PRECIO_DIA*getDias();
+		return PRECIO_DIA * getDias() + vehiculo.getPrecioEspecifico();
 	}
 	
 	/**
@@ -93,9 +93,15 @@ public class Alquiler {
 		return (int) dias+1;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "--:Alquiler:-- \nfecha: " + FORMATO_FECHA.format(getFecha()) + " DÍAS: " + dias + "\nPRECIO: " + getPrecio() + "\n" + cliente + "\n" + vehiculo + "";
+		return String.format("-::ALQUILER::- \nFecha: %s Días: %d Precio: %.2f \nCLIENTE: %s \n%s", 
+								FORMATO_FECHA.format(getFecha()), dias, getPrecio(), getCliente(), getVehiculo());
 	}
+	//@Override
+	//public String toString() {
+		//return "--:Alquiler:-- \nfecha: " + FORMATO_FECHA.format(getFecha()) + " DÍAS: " + dias + "\nPRECIO: %.2f" + getPrecio() + "\n" + cliente + "\n" + vehiculo + "";
+	//}
 
 }

@@ -34,7 +34,7 @@ public class DatosTecnicosVehiculos {
 	public DatosTecnicosVehiculos (DatosTecnicosVehiculos datosTecnicosVehiculos) {
 		
 		cilindrada = datosTecnicosVehiculos.getCilindrada();
-		numeroPlazas = datosTecnicosVehiculos.getCilindrada();
+		numeroPlazas = datosTecnicosVehiculos.getNumeroPlazas();
 		pma = datosTecnicosVehiculos.getPma();
 		
 	}

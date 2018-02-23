@@ -7,7 +7,7 @@ package AlquilerVehiculos.mvc.modelo.dominio.vehiculo;
  */
 public class DeCarga extends Vehiculo {
 	
-	private double precioDeCarga = 0.0;
+	private double factorPrecioDeCarga = getDatosTecnicosVehiculo().getPma();
 	
 	/**
 	 * Constructor con parámetros
@@ -35,7 +35,6 @@ public class DeCarga extends Vehiculo {
 	
 	@Override
 	public double getPrecioEspecifico() {
-		precioDeCarga = (getDatosTecnicosVehiculo().getPma()/20) + 1 * getDatosTecnicosVehiculo().getNumeroPlazas();
-		return precioDeCarga;
+		return factorPrecioDeCarga / getFACTOR_PMA() + (getFACTOR_NUMERO_PLAZAS() / getDatosTecnicosVehiculo().getNumeroPlazas());
 	}
 }

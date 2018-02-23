@@ -113,7 +113,7 @@ public class Alquileres {
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
 			if(alquileres[indice] != null && alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula())
 			   && alquileres[indice].getCliente().getDni().equals(cliente.getDni())
-			   && alquileres[indice].getVehiculo().getDisponible()==false) {
+			   && alquileres[indice].getVehiculo().getDisponible()==false && alquileres[indice].getDias() == 0) {//Mirar esto
 				encontrado = true;
 			}else {
 				indice++;
